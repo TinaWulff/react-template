@@ -1,0 +1,13 @@
+.navigation {
+    display: flex;
+padding: 1em 2em;
+background: #333;
+gap: 1em;
+
+
+& a.active {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+}
