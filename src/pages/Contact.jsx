@@ -12,11 +12,11 @@ const contactSchema = z.object({
 });
 
 
-export default function Contact() {    
+export default function Contact() {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState(false);
-    
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -25,9 +25,9 @@ export default function Contact() {
         data.subscribe = formData.get("subscribe") === "on";    // Convert checkbox value to boolean
 
 
-         
+
         const result = contactSchema.safeParse(data);
-    
+
         if (!result.success) {
             console.log("there where errrors")
             const errors = z.treeifyError(result.error);
@@ -37,21 +37,23 @@ export default function Contact() {
             setErrors({});
             setSuccessMessage(true); //lav succes besked
             console.log('Valid data:', result.data);
-        }
-    
-        fetch("https://jsonplaceholder.typicode.com/users", { //til "loader" metode: const response = await fetch("",...)
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(result.data), // Use the validated data
-        })
-            .then(response => {
-                console.log("data was sent sussesfully");
-                if (response.ok) navigate("/tak");
-            }
-            )
+
+            fetch("https://jsonplaceholder.typicode.com/users", { //til "loader" metode: const response = await fetch("",...)
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(result.data), // Use the validated data
+            })
+                .then(response => {
+                    console.log("data was sent sussesfully");
+                    if (response.ok) navigate("/tak");
+                }
+                )
         };
+    }
+
+
 
 
     return (
