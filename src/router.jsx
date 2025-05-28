@@ -5,6 +5,7 @@ import List from './pages/List';
 import Detail from './pages/Detail';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import Tak from './pages/Tak';
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: 'contact',
                 element: <Contact />
+            },
+            {
+                path: 'tak',
+                element: <Tak />
             },
             {
                 path: '*',
