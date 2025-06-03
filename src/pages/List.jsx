@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
-export default function List() {
+import { useAuth } from "../contexts/Authcontext";
 
+export default function List() {
     const [users, setUsers] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+
+    const { token } = useAuth();
+
+    //login("abcdefghijk")
+
+    console.log(token)
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')

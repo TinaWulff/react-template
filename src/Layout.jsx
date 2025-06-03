@@ -1,26 +1,21 @@
 
 import { Outlet } from 'react-router';
+import Header from './components/Header';
 
-
-import Navigation from './components/navigation';
 
 function Layout() {
- 
+
   return (
     <>
-<header>
-  <h1>My App</h1>
-  <Navigation />
-</header>
+      <Header />
 
-<main>
-<Outlet />
+      <main>
+        <Outlet />
+      </main>
 
-</main>
-
-<footer>
-  <small>My app 2025</small>
-</footer>
+      <footer>
+        <small>My app 2025</small>
+      </footer>
     </>
   )
 }
